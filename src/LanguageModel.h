@@ -10,6 +10,8 @@ public:
     LanguageModel(int k_value);
 
     void train(const string& filename);
+
+    string PickRandom();
 private:
     int k;
     map<string, float> Probabilities;

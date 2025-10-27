@@ -2,6 +2,7 @@
 #include <iostream>
 #include <map>
 #include <fstream>
+#include <random>
 
 using namespace std;
 
@@ -34,9 +35,9 @@ void LanguageModel::train(const string& filename){
         Probabilities[p.first] = float(p.second) / float(size);
     }
     // Prints values
-    for (auto& p : Probabilities) {
-        std::cout << p.first << " " << p.second << std::endl;
-    }
+    //for (auto& p : Probabilities) {
+    //    std::cout << p.first << " " << p.second << std::endl;
+    //}
 }
 string LanguageModel::ReadFileOneLine(const string& filename){ 
     ifstream file(filename); 
@@ -56,4 +57,21 @@ string LanguageModel::ReadFileOneLine(const string& filename){
         one_line.pop_back(); 
     } 
     return one_line; 
+}
+string LanguageModel::PickRandom(){
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_real_distribution<float> dist(0, 1);
+
+    float random_number = dist(gen);
+    float running_sum = 0;
+
+    for (auto& p : Probabilities) {
+        running_sum += p.second;
+        if (running_sum >= random_number) {
+            return p.first;
+        }
+    }
+    // Fallback switch
+    return "";
 }
