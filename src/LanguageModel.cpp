@@ -22,18 +22,18 @@ void LanguageModel::train(const string& filename){
     map<string, int> counts;   
     int size = 0;                        
 
-    // slide window and count (int conversion necessary)
+    // Slide window and count (int conversion necessary)
     for (int i = 0; i + k <= int(one_line.size()); ++i) {
         string w = one_line.substr(i, k);
         counts[w]++;                     // count this k-gram
         size++;                          // total number of windows
     }
 
-    // convert counts to frequencies 
+    // Convert counts to frequencies 
     for (auto& p : counts) {
         Probabilities[p.first] = float(p.second) / float(size);
     }
-    // prints values
+    // Prints values
     for (auto& p : Probabilities) {
         std::cout << p.first << " " << p.second << std::endl;
     }
@@ -41,13 +41,16 @@ void LanguageModel::train(const string& filename){
 string LanguageModel::ReadFileOneLine(const string& filename){ 
     ifstream file(filename); 
     if (!file){ cerr << "Error opening file" << endl; 
-        exit(1); } 
+        exit(1); 
+    } 
+
     // Read file line by line into one giant line 
     string one_line; 
     string word; 
     while (getline(file, word)){ 
         one_line += word + '\n'; 
     } 
+
     // Remove last newline 
     if (!one_line.empty() && one_line.back() == '\n') { 
         one_line.pop_back(); 
