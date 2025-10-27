@@ -9,9 +9,12 @@ class LanguageModel{
 public:
     LanguageModel(int k_value);
 
+    void train(const string& filename);
 private:
     int k;
-    map<char, float> Probabilities;
+    map<string, float> Probabilities;
+
+    string ReadFileOneLine(const string& filename);
 };
 
 #endif
