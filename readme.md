@@ -21,7 +21,9 @@ The software can be compiled simply with the makefile running `$make$` in bash. 
 
 k should be larger or equal to length. There is no reason to depredict, it will therefore throw an error in case of misuse. 
 
-Typically k should also be of small size because matching is done with exact copies. If no copies are present the program will terminate and no prediction can be done. To circumnavigate this please make k small :)
+Typically k should also be of small size because matching is done with exact copies. If no copies are present the program will terminate and no prediction can be done. To circumnavigate this please make k small :). 
+
+Small example if randomlly get a word like "hex" it will predict the next charcter if the entire corpus is just "hej, hex" there is technically no charcter to predict. This can also happen if impossible combinations are generated, this usually happens with large k and a small textfile. 
 
 Only the last \n charcter will be removed.
 
