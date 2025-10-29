@@ -17,7 +17,7 @@ void LanguageModel::Train(const string& filename){
     // Incase of mismatch
     if (int(one_line.size()) < k + 1){
         std::cerr << "Error: text wrong length for k = " << k << endl;
-        return;
+        exit(1);
     }
 
     map<string, int> counts;   
