@@ -4,7 +4,7 @@ using namespace std;
 
 class TextGenerator{
 public:
-    TextGenerator(int k, int length);
+    TextGenerator(int k_input, int length_input);
 
     string ReturnWord();
 private:
