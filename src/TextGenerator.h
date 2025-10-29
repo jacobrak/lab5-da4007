@@ -1,6 +1,7 @@
 #ifndef TEXTGENERATOR_H
 #define TEXTGENERATOR_H
 #include <iostream>
+#include <map> 
 
 using namespace std;
 
@@ -10,11 +11,15 @@ public:
 
     string Generate_text();
 
-    string ReturnWord();
 private:
     int k;
     int length;
     string text_file;
     string word;
+    map<string, float> Probabilities;
+    
+    string ReturnWord();
+
+    void CreateMap();
 };
 #endif

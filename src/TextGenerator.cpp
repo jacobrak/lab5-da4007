@@ -1,6 +1,7 @@
 #include "TextGenerator.h"
 #include "LanguageModel.h"
 #include <iostream>
+#include <cassert>
 
 using namespace std;
 
@@ -15,7 +16,16 @@ string TextGenerator::Generate_text(){
     Model.train(text_file);
     string random_text = Model.PickRandom();
 
-    return random_text;
+    word += random_text;
+    string tmp = random_text;
+    while (int(word.size()) != length){
+        tmp;
+        CreateMap();
+    }
+    return ReturnWord();
+}
+void TextGenerator::CreateMap(){
+    
 }
 
 string TextGenerator::ReturnWord(){
