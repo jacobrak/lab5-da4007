@@ -13,6 +13,7 @@ TextGenerator::TextGenerator(int k_input, int length_input, const string& filena
 }
 
 string TextGenerator::Generate_text(){
+    assert(k <= length && "length must be greater than or equal to k");
     // Call LanguageModel for random pick
     LanguageModel Model(k);
     Model.Train(text_file);
@@ -53,8 +54,8 @@ void TextGenerator::CreateMap(string text, string random_text){
     }
 
     if (items_found == 0) {
-        cerr << "Small Language Model cannot predict next charcter please enter in Openai APIkey:" << endl;
-        exit(1);
+        cerr << "Small Language Model cannot predict next charcter due to insufficient matching issues:" << endl;
+        exit(1); 
     }
     for (auto& p : Probabilities) {
         Probabilities[p.first] = float(p.second) / float(items_found);
