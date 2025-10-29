@@ -9,13 +9,14 @@ using namespace std;
 LanguageModel::LanguageModel(int k_value){
     k = k_value;
 }
+
 void LanguageModel::Train(const string& filename){
-    string one_line = ReadFileOneLine(filename);
+    string one_line = ReadFileOneLine(filename); // 
 
     Probabilities.clear();
 
     // Incase of mismatch
-    if (int(one_line.size()) < k + 1){
+    if (int(one_line.size()) <= k + 1){
         std::cerr << "Error: text wrong length for k = " << k << endl;
         exit(1);
     }
@@ -34,10 +35,6 @@ void LanguageModel::Train(const string& filename){
     for (auto& p : counts) {
         Probabilities[p.first] = float(p.second) / float(size);
     }
-    // Prints values
-    //for (auto& p : Probabilities) {
-    //    std::cout << p.first << " " << p.second << std::endl;
-    //}
 }
 string LanguageModel::ReadFileOneLine(const string& filename){ 
     ifstream file(filename); 
