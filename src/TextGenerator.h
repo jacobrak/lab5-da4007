@@ -6,7 +6,7 @@ class TextGenerator{
 public:
     TextGenerator(int k, int length);
 
-    string ReturnString();
+    string ReturnWord();
 private:
     int k;
     int length;
