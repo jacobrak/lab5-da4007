@@ -17,13 +17,13 @@ string TextGenerator::Generate_text(){
     // Call LanguageModel for random pick
     LanguageModel Model(k);
     Model.Train(text_file);
-    string random_text = Model.PickRandom();
+    string start_sequence = Model.PickRandom();
 
     // Get full text from LanguageModel
     string FullText = Model.ReadFileOneLine(text_file);
 
-    word += random_text;
-    string tmp = random_text;
+    word += start_sequence;
+    string tmp = start_sequence;
 
     // Run while loop until word_size is equal to length
     while (int(word.size()) != length){
@@ -35,15 +35,17 @@ string TextGenerator::Generate_text(){
     }
     return ReturnWord();
 }
-void TextGenerator::CreateMap(string text, string random_text){
+void TextGenerator::CreateMap(string text, string text_sequence){
     Probabilities.clear();
 
     int items_found = 0;
     int pos = 0;
+    
     while (true) {
-        pos = text.find(random_text, pos);    
-        if (pos == string::npos) break;
+        pos = text.find(text_sequence, pos);    
+        if (pos == string::npos) break; // Break incase of invalid position
 
+        // Gather next index from text
         size_t nextIdx = pos + k;             
         if (nextIdx < text.size()) {
             char c = text[nextIdx];
@@ -57,6 +59,8 @@ void TextGenerator::CreateMap(string text, string random_text){
         cerr << "Small Language Model cannot predict next charcter due to insufficient matching issues:" << endl;
         exit(1); 
     }
+
+    // Calculate probabilities
     for (auto& p : Probabilities) {
         Probabilities[p.first] = float(p.second) / float(items_found);
     }

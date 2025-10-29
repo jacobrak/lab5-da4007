@@ -20,7 +20,7 @@ private:
 
     string ReturnWord();
 
-    void CreateMap(string text, string random_text);
+    void CreateMap(string text, string text_sequence);
 
     char PickRandom();
 };
