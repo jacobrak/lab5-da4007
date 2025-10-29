@@ -15,7 +15,7 @@ TextGenerator::TextGenerator(int k_input, int length_input, const string& filena
 string TextGenerator::Generate_text(){
     // Call LanguageModel for random pick
     LanguageModel Model(k);
-    Model.train(text_file);
+    Model.Train(text_file);
     string random_text = Model.PickRandom();
 
     // Get full text from LanguageModel

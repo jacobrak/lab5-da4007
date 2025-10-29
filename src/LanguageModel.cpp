@@ -9,7 +9,7 @@ using namespace std;
 LanguageModel::LanguageModel(int k_value){
     k = k_value;
 }
-void LanguageModel::train(const string& filename){
+void LanguageModel::Train(const string& filename){
     string one_line = ReadFileOneLine(filename);
 
     Probabilities.clear();

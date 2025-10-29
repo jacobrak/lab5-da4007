@@ -9,7 +9,7 @@ class LanguageModel{
 public:
     LanguageModel(int k_value);
 
-    void train(const string& filename);
+    void Train(const string& filename);
 
     string PickRandom();
     
