@@ -27,7 +27,10 @@ string TextGenerator::Generate_text(){
     // Run while loop until word_size is equal to length
     while (int(word.size()) != length){
         CreateMap(FullText, tmp);
-        
+        string s = string(1, PickRandom()); // convert to string
+        tmp = tmp.substr(1); // Get rid of first character
+        tmp += s;
+        word += s;
     }
     return ReturnWord();
 }
