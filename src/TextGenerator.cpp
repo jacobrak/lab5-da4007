@@ -27,6 +27,7 @@ string TextGenerator::Generate_text(){
     // Run while loop until word_size is equal to length
     while (int(word.size()) != length){
         CreateMap(FullText, tmp);
+        
     }
     return ReturnWord();
 }
@@ -49,7 +50,7 @@ void TextGenerator::CreateMap(string text, string random_text){
     }
 
     if (items_found == 0) {
-        cerr << "Small Language Model cannot predict next charcter please enter Openai APIkey:" << endl;
+        cerr << "Small Language Model cannot predict next charcter please enter in Openai APIkey:" << endl;
         exit(1);
     }
     for (auto& p : Probabilities) {
