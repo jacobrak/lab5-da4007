@@ -21,5 +21,7 @@ private:
     string ReturnWord();
 
     void CreateMap(string text, string random_text);
+
+    char PickRandom();
 };
 #endif
