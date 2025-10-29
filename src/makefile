@@ -1,6 +1,6 @@
 
-output: main.o LanguageModel.o TextGenerator.o
-	g++ main.o LanguageModel.o TextGenerator.o -o output
+slm: main.o LanguageModel.o TextGenerator.o
+	g++ main.o LanguageModel.o TextGenerator.o -o slm
 
 main.o: main.cpp
 	g++ -c main.cpp -o main.o
@@ -12,4 +12,4 @@ TextGenerator.o: TextGenerator.cpp TextGenerator.h
 	g++ -c TextGenerator.cpp -o TextGenerator.o
 
 clean:
-	rm *.o output
+	rm *.o slm
