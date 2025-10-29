@@ -16,10 +16,10 @@ private:
     int length;
     string text_file;
     string word;
-    map<string, float> Probabilities;
-    
+    map<char, float> Probabilities;
+
     string ReturnWord();
 
-    void CreateMap();
+    void CreateMap(string text, string random_text);
 };
 #endif
