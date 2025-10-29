@@ -12,11 +12,11 @@ public:
     void train(const string& filename);
 
     string PickRandom();
+    
+    string ReadFileOneLine(const string& filename);
 private:
     int k;
     map<string, float> Probabilities;
-
-    string ReadFileOneLine(const string& filename);
 };
 
 #endif
